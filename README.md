@@ -13,7 +13,7 @@ go get github.com/handleui/shimmer
 ## Usage
 
 ```go
-shimmer.Run("Loading...", "#00D787")
+shimmer.Run("Loading", "#00D787")
 ```
 
 That's it.
@@ -21,7 +21,7 @@ That's it.
 ### With a task
 
 ```go
-shimmer.NewSpinner("Installing...", "#00D787").
+shimmer.NewSpinner("Installing", "#00D787").
     Action(func() { exec.Command("npm", "install").Run() }).
     Run()
 ```

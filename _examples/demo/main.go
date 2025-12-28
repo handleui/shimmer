@@ -2,13 +2,16 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/handleui/shimmer"
 )
 
 func main() {
-	shimmer.NewSpinner("Shimmering...", "#00D787").
+	fmt.Println()
+	shimmer.NewSpinner("Shimmering", "#00D787").
 		Action(func() { time.Sleep(5 * time.Second) }).
 		Run()
+	fmt.Println()
 }
