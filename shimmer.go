@@ -219,10 +219,7 @@ func (m Model) generateWaveColors() []string {
 	r, g, b := parseHexColor(m.baseColor)
 
 	// Build symmetric wave: 0 -> peak -> 0
-	steps := m.waveWidth
-	if steps < 2 {
-		steps = 2
-	}
+	steps := max(m.waveWidth, 2)
 
 	colors := make([]string, steps)
 	mid := steps / 2

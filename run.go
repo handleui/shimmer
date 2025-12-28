@@ -130,11 +130,11 @@ func (m actionModel) Init() tea.Cmd {
 }
 
 func (m actionModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	switch msg.(type) {
+	switch msg := msg.(type) {
 	case actionDoneMsg:
 		return m, tea.Quit
 	case tea.KeyMsg:
-		if msg.(tea.KeyMsg).String() == "ctrl+c" {
+		if msg.String() == "ctrl+c" {
 			return m, tea.Quit
 		}
 	}
