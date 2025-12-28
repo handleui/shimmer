@@ -1,3 +1,22 @@
+// Package shimmer provides animated shimmering text for terminal UIs.
+//
+// A wave of light sweeps across text, creating a modern loading indicator.
+// Works standalone or as a Bubble Tea component.
+//
+// Quick start:
+//
+//	shimmer.Run("Loading", "#00D787")
+//
+// With background task:
+//
+//	shimmer.NewSpinner("Installing", "#00D787").
+//	    Action(func() { exec.Command("npm", "install").Run() }).
+//	    Run()
+//
+// As Bubble Tea component:
+//
+//	m := shimmer.New("Loading", "#00D787")
+//	// use m.Init(), m.Update(), m.View() in your Bubble Tea app
 package shimmer
 
 import (

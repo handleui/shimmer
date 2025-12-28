@@ -1,8 +1,8 @@
 # Shimmer
 
-Shimmering text for your terminal. A wave of light sweeps across your text.
+Animated shimmering text for Go terminals. A wave of light sweeps across your text.
 
-Built this for [handleui/detent](https://github.com/handleui/detent) but it works anywhere.
+Built for [handleui/detent](https://github.com/handleui/detent).
 
 ## Install
 
@@ -16,9 +16,7 @@ go get github.com/handleui/shimmer
 shimmer.Run("Loading", "#00D787")
 ```
 
-That's it.
-
-### With a task
+### With background task
 
 ```go
 shimmer.NewSpinner("Installing", "#00D787").
@@ -26,17 +24,45 @@ shimmer.NewSpinner("Installing", "#00D787").
     Run()
 ```
 
-### Options
+### With context
 
 ```go
-shimmer.WithInterval(100 * time.Millisecond) // speed
-shimmer.WithWaveWidth(12)                    // wave size
-shimmer.WithDirection(shimmer.DirectionLeft) // direction
+ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+defer cancel()
+shimmer.RunContext(ctx, "Loading", "#00D787")
 ```
+
+## API
+
+### Functions
+
+| Function | Description |
+|----------|-------------|
+| `Run(text, color, opts...)` | Display shimmer until Ctrl+C |
+| `RunContext(ctx, text, color, opts...)` | Display shimmer with context |
+| `New(text, color, opts...)` | Create Bubble Tea component |
+| `NewSpinner(text, color, opts...)` | Create spinner with action |
+
+### Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `WithInterval(time.Duration)` | 50ms | Animation speed |
+| `WithWaveWidth(int)` | 8 | Wave size in characters |
+| `WithWavePause(int)` | 8 | Pause between loops |
+| `WithPeakLight(int)` | 90 | Brightness 0-100 |
+| `WithDirection(Direction)` | Right | `DirectionLeft` or `DirectionRight` |
 
 ### Bubble Tea
 
-Works as a component too. See [shimmer.go](shimmer.go) for the `Model` interface.
+```go
+m := shimmer.New("Loading", "#00D787")
+m.Init()              // start animation
+m.Update(msg)         // handle ticks
+m.View()              // render
+m.SetText("Done")     // change text
+m.SetLoading(false)   // stop animation
+```
 
 ## Demo
 

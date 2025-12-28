@@ -11,11 +11,11 @@ import (
 //
 // Example:
 //
-//	shimmer.Run("Loading...", "#00D787")
+//	shimmer.Run("Loading", "#00D787")
 //
 // With options:
 //
-//	shimmer.Run("Processing...", "#FFC000",
+//	shimmer.Run("Processing", "#FFC000",
 //	    shimmer.WithInterval(100*time.Millisecond),
 //	    shimmer.WithWaveWidth(12),
 //	)
@@ -71,7 +71,7 @@ type Spinner struct {
 //
 // Example:
 //
-//	shimmer.NewSpinner("Installing...", "#00D787").
+//	shimmer.NewSpinner("Installing", "#00D787").
 //	    Action(func() { exec.Command("npm", "install").Run() }).
 //	    Run()
 func NewSpinner(text, color string, opts ...Option) *Spinner {
