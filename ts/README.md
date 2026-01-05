@@ -1,6 +1,6 @@
-# Shimmer
+# Shimmer for TypeScript
 
-Shimmering text for terminals. A wave of light sweeps across your text.
+Shimmering text for terminals.
 
 ## Install
 
@@ -34,22 +34,47 @@ await runContext(controller.signal, "Loading", "#00D787");
 
 ## API
 
+### Functions
+
 | Function | Description |
 |----------|-------------|
 | `run(text, color, opts?)` | Display shimmer until Ctrl+C |
 | `runContext(signal, text, color, opts?)` | Display shimmer with AbortSignal |
-| `create(text, color, opts?)` | Create shimmer Model |
+| `create(text, color, opts?)` | Create Model instance |
 | `newSpinner(text, color, opts?)` | Create spinner with action |
 
 ### Options
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `interval` | 50 | Animation speed in ms |
-| `waveWidth` | 8 | Wave size in characters |
-| `wavePause` | 8 | Pause between loops |
-| `peakLight` | 90 | Brightness 0-100 |
-| `direction` | Right | `Direction.Left` or `Direction.Right` |
+```ts
+interface Options {
+  interval?: number;   // Animation speed in ms (default: 50)
+  waveWidth?: number;  // Wave size in characters (default: 8)
+  wavePause?: number;  // Pause between loops (default: 8)
+  peakLight?: number;  // Brightness 0-100 (default: 90)
+  direction?: Direction; // Direction.Left or Direction.Right
+}
+```
+
+### Model
+
+```ts
+const model = create("Loading", "#00D787");
+model.init();              // start animation
+model.stop();              // stop animation
+model.view();              // render current frame
+model.setText("Done");     // change text
+model.setLoading(false);   // stop and render static
+model.setOnTick(() => {}); // callback on each frame
+```
+
+### Spinner
+
+```ts
+newSpinner("Loading", "#00D787")
+  .action(async () => { /* work */ })  // runs while animating
+  .context(signal)                      // optional AbortSignal
+  .run();                               // starts animation
+```
 
 ## Demo
 
