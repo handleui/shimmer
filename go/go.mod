@@ -1,4 +1,4 @@
-module github.com/handleui/shimmer
+module github.com/handleui/shimmer/go
 
 go 1.25.5
 

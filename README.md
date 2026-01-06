@@ -6,7 +6,7 @@ Shimmering text for terminals.
 
 | Language | Package |
 |----------|---------|
-| Go | `go get github.com/handleui/shimmer` |
+| Go | `go get github.com/handleui/shimmer/go` |
 | TypeScript | `npm install @handleui/shimmer` |
 
 ## Usage
@@ -14,6 +14,8 @@ Shimmering text for terminals.
 ### Go
 
 ```go
+import "github.com/handleui/shimmer/go"
+
 shimmer.Run("Loading", "#00D787")
 ```
 
@@ -26,15 +28,5 @@ run("Loading", "#00D787");
 
 ## Docs
 
-- [Go](./docs/go.md)
+- [Go](./go/README.md)
 - [TypeScript](./ts/README.md)
-
-## Demo
-
-```bash
-# Go
-go run ./_examples/demo
-
-# TypeScript
-cd ts && npm run demo
-```

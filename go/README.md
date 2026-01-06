@@ -5,12 +5,14 @@ Shimmering text for terminals. Built on [Bubble Tea](https://github.com/charmbra
 ## Install
 
 ```bash
-go get github.com/handleui/shimmer
+go get github.com/handleui/shimmer/go
 ```
 
 ## Usage
 
 ```go
+import "github.com/handleui/shimmer/go"
+
 shimmer.Run("Loading", "#00D787")
 ```
 
